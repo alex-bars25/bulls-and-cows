@@ -1,0 +1,50 @@
+{
+  "name": "bulls-and-cows",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky",
+    "compile": "tsc --noEmit",
+    "build": "tsc",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-bars25/bulls-and-cows.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/alex-bars25/bulls-and-cows/issues"
+  },
+  "homepage": "https://github.com/alex-bars25/bulls-and-cows#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^26.6.6",
+    "eslint": "^10.14.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.14.0",
+    "husky": "^9.1.7",
+    "jest": "^30.5.2",
+    "jest-environment-node": "^30.5.2",
+    "lint-staged": "^17.6.0",
+    "prettier": "^3.9.10",
+    "ts-jest": "^29.4.15",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.2"
+  },
+  "lint-staged": {
+    "*.{ts,js}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}
