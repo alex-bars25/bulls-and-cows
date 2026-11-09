@@ -1,4 +1,4 @@
-const DIGIT_CHARS = '0123456789abcdef';
+import { DIGIT_CHARS } from './digitChars';
 
 export const createDigitValidator =
   (base: number) =>
