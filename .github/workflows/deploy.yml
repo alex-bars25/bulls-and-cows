@@ -34,13 +34,15 @@ jobs:
 
       - name: Prepare deployment artifact
         run: |
-          cp index.html dist/
-          cp styles.css dist/
+          mkdir -p .deploy
+          cp index.html .deploy/
+          cp styles.css .deploy/
+          cp -r dist .deploy/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./.deploy
 
   deploy:
     environment:
