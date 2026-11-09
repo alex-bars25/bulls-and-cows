@@ -6,14 +6,16 @@
   "scripts": {
     "prepare": "husky",
     "compile": "tsc --noEmit",
-    "build": "tsc",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "build": "esbuild src/ui/index.ts --bundle --outfile=dist/bundle.js --minify",
+    "watch": "esbuild src/ui/index.ts --bundle --outfile=dist/bundle.js --watch",
+    "serve": "npx serve ."
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,7 @@
     "@eslint/js": "^10.0.1",
     "@types/jest": "^30.0.0",
     "@types/node": "^26.6.6",
+    "esbuild": "^0.28.2",
     "eslint": "^10.14.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^17.14.0",
