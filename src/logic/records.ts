@@ -9,6 +9,12 @@ export type RecordEntry = {
 
 export type Records = readonly RecordEntry[];
 
-export const addRecord = (_records: Records, _entry: RecordEntry, _limit: number): Records => {
-  throw new Error('Not implemented');
+const compareRecords = (a: RecordEntry, b: RecordEntry): number => {
+  if (a.attempts !== b.attempts) return a.attempts - b.attempts;
+  return a.durationMs - b.durationMs;
+};
+
+export const addRecord = (records: Records, entry: RecordEntry, limit: number): Records => {
+  if (limit <= 0) return [];
+  return [...records, entry].sort(compareRecords).slice(0, limit);
 };
