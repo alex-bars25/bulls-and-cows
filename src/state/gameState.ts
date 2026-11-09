@@ -36,6 +36,40 @@ export type GameAction =
     }
   | { readonly type: 'reset' };
 
-export const gameReducer = (_state: GameState | null, _action: GameAction): GameState | null => {
-  throw new Error('Not implemented');
+export const gameReducer = (state: GameState | null, action: GameAction): GameState | null => {
+  switch (action.type) {
+    case 'start':
+      return {
+        settings: action.settings,
+        secret: action.secret,
+        history: [],
+        status: 'in-progress',
+        startedAt: action.startedAt,
+      };
+
+    case 'guess': {
+      if (state === null) return null;
+      if (state.status === 'won') return state;
+
+      const entry: HistoryEntry = {
+        guess: action.guess,
+        bulls: action.result.bulls,
+        cows: action.result.cows,
+        attemptNumber: state.history.length + 1,
+        timestamp: action.timestamp,
+      };
+
+      const nextStatus: GameStatus =
+        action.result.bulls === state.settings.length ? 'won' : 'in-progress';
+
+      return {
+        ...state,
+        history: [...state.history, entry],
+        status: nextStatus,
+      };
+    }
+
+    case 'reset':
+      return null;
+  }
 };
